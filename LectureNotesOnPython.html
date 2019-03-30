@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>Lecture Notes on Python</title>
+<meta name="authors" content="蓝珲 (lanhui AT zjnu.edu.cn)" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="lecture-notes-on-python">
+<h1 class="title">Lecture Notes on Python</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Authors:</th>
+<td>蓝珲 (lanhui AT zjnu.edu.cn)</td></tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>0.1 of 2019/03/30</td></tr>
+</tbody>
+</table>
+<p>非学究写书，无空洞行文。Python语法简洁，库函数全面强大，编程速度快，运行速度也不慢。</p>
+<div class="section" id="python">
+<h1>Python的发音纠正</h1>
+<p>国人普遍把th发作s。 Not quite correct。</p>
+<p>ˈpī-ˌthän , -thən <a class="reference external" href="https://cn.bing.com/search?q=define%20python&amp;tf=U2VydmljZT1EaWN0aW9uYXJ5QW5zd2VyVjIgU2NlbmFyaW89RGVmaW5pdGlvblNjZW5hcmlvIFBvc2l0aW9uPU5PUCBSYW5raW5nRGF0YT1UcnVlIEZvcmNlUGxhY2U9RmFsc2UgUGFpcnM9RGljdGlvbmFyeVdvcmQ6cHl0aG9uO3NjbjpEZWZpbml0aW9uU2NlbmFyaW87cDpRQVM7IHw%3d&amp;hs=hyRBF0mYq9hrfQUq66DIZnFVta1ZGRfBiBks25oUguk%3d">pronounciation</a></p>
+</div>
+<div class="section" id="id1">
+<h1>Python源流</h1>
+<p>Python之父Guido van Rossum，荷兰人，1956年生，1982年阿姆斯特丹大学获得
+数学与计算机科学硕士学位。有过ABC语言的工作经验。1989年设计了Python语
+言。</p>
+<p>Python语法简洁，有大而全而有用的标准库。</p>
+<p>自然（natural）语言。特点：歧义，重复。“The penny dropped。” “不要。”</p>
+<p>正式（formal）语言。特点：只管字面意思。</p>
+<p>计算机组成概要：CPU，总线，内存，硬盘。</p>
+<p>Bit, byte, KB, MB, GB, TB换算。</p>
+<p>变量的命名。如，层叠策略，用CDCL还是TiledStrategy?</p>
+<p>教务管理系统，<a class="reference external" href="http://10.1.70.164/jwglxt">http://10.1.70.164/jwglxt</a>?</p>
+<p>习语言、易语言等目前非主流语言。</p>
+<p>最简单的类定义:</p>
+<blockquote>
+<dl class="docutils">
+<dt>class A:</dt>
+<dd>pass</dd>
+</dl>
+</blockquote>
+<p>以上面的类为蓝本，创建一个实例：a = A()。 虽然这个a什么也做不了。</p>
+<p>Python文件命令行执行。 python a.py。</p>
+<p>函数头的三要素：def，函数名，参数列表:</p>
+<blockquote>
+<div class="line-block">
+<div class="line">def add_number(a, b):</div>
+<div class="line-block">
+<div class="line">return a + b</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">def add_lst(a, b):</div>
+<div class="line-block">
+<div class="line">if len(a) != len(b):</div>
+<div class="line-block">
+<div class="line">return 'ERROR: a and b not in equal length.'</div>
+</div>
+<div class="line">n = len(a)</div>
+<div class="line">result = []</div>
+<div class="line">for i in range(n):</div>
+<div class="line-block">
+<div class="line">result.append(a[i] + b[i])</div>
+</div>
+<div class="line">return result</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">print( add_lst([1,2,3],[-1,-2,-3]) )</div>
+</div>
+</blockquote>
+</div>
+<div class="section" id="id2">
+<h1>Python的关键词</h1>
+<div class="line-block">
+<div class="line">def pass</div>
+<div class="line">from import</div>
+<div class="line">False True</div>
+<div class="line">in</div>
+<div class="line">None</div>
+<div class="line">class</div>
+<div class="line">return</div>
+<div class="line">while for</div>
+<div class="line">continue break</div>
+<div class="line">and or not</div>
+<div class="line">if else elif</div>
+<div class="line">try except finally raise</div>
+<div class="line">lambda nonlocal</div>
+<div class="line">del global with</div>
+<div class="line">yield assert</div>
+<div class="line">as is</div>
+</div>
+<p>关键词被语言留用（reserved），无法作变量名。</p>
+</div>
+<div class="section" id="id3">
+<h1>值的类型</h1>
+<p>所有的值都是对象。a = 5, help(a)  a.bit_length()</p>
+<p>数字。1， 1.，1.1， .1, 1e1, 1e-1, 1E1, 1E-1</p>
+<dl class="docutils">
+<dt>字符串（string）。'hello', 100 * 'hello', 'hello' * 100, 'Weight is %4.2f kg' % (70.2)</dt>
+<dd>f = open('a.html')
+s = f.read()
+f.close()</dd>
+<dt>列表（list）。['a', 'b', 'c', 'd']</dt>
+<dd>['bob', 170, 'john', '180']
+[1, 2, 3, 4]
+range(10) 返回一个range对象。可以用list函数把这个对象变成列表。
+等价的是range(0, 10, 1)，从0开始，步进1，不包括10。
+A list of list
+A list of tuples
+A list of objects</dd>
+</dl>
+<p>元组（tuple），字典（dict）。</p>
+</div>
+<div class="section" id="variable">
+<h1>变量（Variable）</h1>
+<p>是一个名字（name），是指向一个值（value）的名字。</p>
+<p>值存放在内存（memory）中的某个地址。</p>
+<p>尽量选有意义的简短的名字。比如，代表个数用n，代表索引用i，j，k。</p>
+<p>关键词不能用作变量名。</p>
+<p>值存放在内存某处。值会记录指向它的变量个数。</p>
+<p>为节省空间，如果几个变量的值相同，那么这些变量有时会指向这个值（而不是为每个变量单独分配内存空间单独存放该值）。</p>
+<p>这叫做interning技术。但并非总是如此。</p>
+<div class="line-block">
+<div class="line">a = 10</div>
+<div class="line">b = 10</div>
+<div class="line">c = 10</div>
+<div class="line">id(a), id(b), id(c)</div>
+<div class="line">(8791229060416, 8791229060416, 8791229060416)</div>
+</div>
+<p>值10存在地址8791229060416，所有a，b，c三个变量都指向（point to）这个地址。</p>
+<div class="line-block">
+<div class="line">x = 257</div>
+<div class="line">y = 257</div>
+<div class="line">id(x), id(y)</div>
+<div class="line">(46487024, 46487952)</div>
+</div>
+<p>以上虽然变量x与y的值都是一样，可是这两个值存放在不同的内存地址。</p>
+<div class="line-block">
+<div class="line">s1 = 'hello'</div>
+<div class="line">s2 = 'hello'</div>
+<div class="line">id(s1), id(s2)</div>
+<div class="line">s1 == s2</div>
+<div class="line">s1 is s2</div>
+</div>
+<div class="line-block">
+<div class="line">s1 = 'h' * 100</div>
+<div class="line">s2 = 'h' * 100</div>
+<div class="line">id(s1), id(s2)</div>
+</div>
+<div class="line-block">
+<div class="line">s3 = 'hello, world!'</div>
+<div class="line">s4 = 'hello, world!'</div>
+<div class="line">id(s3), id(s4)</div>
+<div class="line">(46703536, 46705136)</div>
+</div>
+<div class="line-block">
+<div class="line">class A:</div>
+<div class="line-block">
+<div class="line">pass</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">a = A()</div>
+<div class="line">b = A()</div>
+<div class="line">a</div>
+<div class="line">&lt;__main__.A object at 0x0000000002CD92E8&gt;</div>
+<div class="line">b</div>
+<div class="line">&lt;__main__.A object at 0x0000000002CD9240&gt;</div>
+</div>
+<div class="line-block">
+<div class="line">x = [1,2,3]</div>
+<div class="line">id(x)</div>
+<div class="line">46869512</div>
+<div class="line">y = x</div>
+<div class="line">id(y)</div>
+<div class="line">46869512</div>
+<div class="line">x.append(4)</div>
+<div class="line">x</div>
+<div class="line">[1, 2, 3, 4]</div>
+<div class="line">y</div>
+<div class="line">[1, 2, 3, 4]</div>
+</div>
+<div class="line-block">
+<div class="line">x = []</div>
+<div class="line">id(x)</div>
+<div class="line">46869640</div>
+</div>
+<div class="line-block">
+<div class="line">x = [1,2,3,4]</div>
+<div class="line">y = [1,2,3,4]</div>
+<div class="line">id(x)</div>
+<div class="line">46869768</div>
+<div class="line">id(y)</div>
+<div class="line">46868808</div>
+</div>
+<p>一个没有名字与之对应的值将会被清出内存。</p>
+<p>参考资料：</p>
+<ul class="simple">
+<li><a class="reference external" href="http://foobarnbaz.com/2012/07/08/understanding-python-variables/">http://foobarnbaz.com/2012/07/08/understanding-python-variables/</a></li>
+<li><a class="reference external" href="https://stackoverflow.com/questions/19721002/is-a-variable-the-name-the-value-or-the-memory-location">https://stackoverflow.com/questions/19721002/is-a-variable-the-name-the-value-or-the-memory-location</a></li>
+</ul>
+</div>
+<div class="section" id="mutable">
+<h1>可变（mutable）类型与不可变类型</h1>
+<p>字符串是不可变的（immutable）类型，不能在原内存地址改变。</p>
+<p>a = 'hello'  不可以原地修改a[0] = 'H'。需要修改a的值时，需要对a进行重新赋值a = 'Hello'。</p>
+<p>列表是可变（mutable）类型，能在原内存地址改变。</p>
+<p>a = [1, 2]   可以原地修改a[0] = 2</p>
+<p>参考资料：</p>
+<ul class="simple">
+<li><a class="reference external" href="https://stackoverflow.com/questions/8056130/immutable-vs-mutable-types">https://stackoverflow.com/questions/8056130/immutable-vs-mutable-types</a></li>
+</ul>
+<p>表达式（expression）：值，变量或操作符的组合。</p>
+<blockquote>
+<div class="line-block">
+<div class="line">17</div>
+<div class="line">n + 2</div>
+</div>
+</blockquote>
+<p>语句（statement）：能够制造一个变量或者显示信息的代码。</p>
+<blockquote>
+<div class="line-block">
+<div class="line">n = 17</div>
+<div class="line">print(n)</div>
+</div>
+</blockquote>
+</div>
+<div class="section" id="id4">
+<h1>数</h1>
+<div class="line-block">
+<div class="line">x = 3.1415926</div>
+</div>
+<div class="line-block">
+<div class="line">print('%4.0f' % (x))</div>
+<div class="line">print('%4.1f' % (x))</div>
+<div class="line">print('%4.2f' % (x))</div>
+<div class="line">print('%4.3f' % (x))</div>
+<div class="line">print('%4.4f' % (x))</div>
+</div>
+<div class="line-block">
+<div class="line">print('%6.0f' % (x))</div>
+<div class="line">print('%6.1f' % (x))</div>
+<div class="line">print('%6.2f' % (x))</div>
+<div class="line">print('%6.3f' % (x))</div>
+<div class="line">print('%6.4f' % (x))</div>
+</div>
+<div class="line-block">
+<div class="line">print('%.0f' % (x))</div>
+<div class="line">print('%.1f' % (x))</div>
+<div class="line">print('%.2f' % (x))</div>
+<div class="line">print('%.3f' % (x))</div>
+<div class="line">print('%.4f' % (x))</div>
+<div class="line">print('%.5f' % (x))</div>
+<div class="line">print('%.6f' % (x))</div>
+<div class="line">print('%.7f' % (x))</div>
+<div class="line">print('%.8f' % (x))</div>
+<div class="line">print('%.9f' % (x))</div>
+<div class="line">print('%.15f' % (x))</div>
+<div class="line">print('%.16f' % (x))</div>
+<div class="line">print('%.17f' % (x))</div>
+<div class="line">print('%.18f' % (x))</div>
+</div>
+<div class="line-block">
+<div class="line">print('%4.f' % (x))</div>
+<div class="line">print('%5.f' % (x))</div>
+<div class="line">print('%6.f' % (x))</div>
+<div class="line">print('%7.f' % (x))</div>
+<div class="line">print('%8.f' % (x))</div>
+</div>
+<div class="line-block">
+<div class="line">print('%f' % (x))</div>
+</div>
+</div>
+<div class="section" id="strings">
+<h1>字符串（Strings）</h1>
+<p>由字符组成。</p>
+<div class="line-block">
+<div class="line">fruit = 'banana!'</div>
+<div class="line">first_letter = fruit[0]</div>
+<div class="line">second_letter = fruit[1]</div>
+</div>
+<p>索引（index）从0开始，所以1代表第二个字符。只用整数。</p>
+<p>负整数代表从字符串末尾开始。如fruit[-1]代表fruit字符串最后一个字符。</p>
+<div class="line-block">
+<div class="line">i = 1</div>
+<div class="line">fruit[i]</div>
+<div class="line">fruit[i+1]</div>
+</div>
+<p>len()函数。返回字符串字符个数。len(fruit)。</p>
+<div class="line-block">
+<div class="line">L = len(fruit)</div>
+<div class="line">fruit[L-1]，最后一个字符。与fruit[-1]等价。</div>
+</div>
+<p>遍历（traverse）字符串。</p>
+<blockquote>
+<div class="line-block">
+<div class="line">fruit = 'banana'</div>
+<div class="line">for c in fruit:</div>
+<div class="line-block">
+<div class="line">print(c)</div>
+</div>
+</div>
+</blockquote>
+<p>反向遍历。</p>
+<blockquote>
+<div class="line-block">
+<div class="line">fruit = 'banana'</div>
+<div class="line">for i in range(len(fruit)-1,-1,-1):</div>
+<div class="line-block">
+<div class="line">print(fruit[i])</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">fruit = 'banana'</div>
+<div class="line">for c in fruit[::-1]:  # [start,stop,step]</div>
+<div class="line-block">
+<div class="line">print(c)</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">fruit = 'banana'</div>
+<div class="line">for c in ''.join(reversed(fruit)):</div>
+<div class="line-block">
+<div class="line">print(c)</div>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="section" id="concatenation">
+<h1>字符串相加（concatenation）</h1>
+<p>输出Jack, Kack, Lack, Mack, Nack, Ouack, Pack, and Quack</p>
+<div class="line-block">
+<div class="line">prefixes = 'JKLMNOPQ'</div>
+<div class="line">suffix = 'ack'</div>
+<div class="line">for c in prefixes:</div>
+<div class="line-block">
+<div class="line">if c == 'O' or c == 'Q':</div>
+<div class="line-block">
+<div class="line">print(c + 'u' + suffix)</div>
+</div>
+<div class="line">else:</div>
+<div class="line-block">
+<div class="line">print(c + suffix)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="slice">
+<h1>子串（slice）</h1>
+<p>s[n:m]，其中n或m可省略。
+包括第n个字符，不包括第m个字符。（索引自0开始）</p>
+<div class="line-block">
+<div class="line">s = 'Monty Python'</div>
+<div class="line">s[0:5]</div>
+<div class="line">s[6:12]</div>
+<div class="line">s[:5]</div>
+<div class="line">s[6:]</div>
+<div class="line">s[:]</div>
+</div>
+<p>n一般小于m。如果n大于等于m，那么就返回空字符串。</p>
+<p>空字符串的长度是0。</p>
+<p>字符串是immutable的。不能改变已有的字符串。</p>
+<div class="line-block">
+<div class="line">greeting = 'Hello, world!'</div>
+<div class="line">greeting[0] = 'J'</div>
+</div>
+<div class="line-block">
+<div class="line">greeting = 'Hello, world!'</div>
+<div class="line">new_greeting = 'J' + greeting[1:]</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>搜索字符串</h1>
+<div class="line-block">
+<div class="line">def find(word, c):</div>
+<div class="line-block">
+<div class="line">i = 0</div>
+<div class="line">while i &lt; len(word):</div>
+<div class="line-block">
+<div class="line">if word[i] == c:</div>
+<div class="line-block">
+<div class="line">return i</div>
+</div>
+<div class="line">i = i + 1</div>
+</div>
+<div class="line">return -1</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">print(find('banana', 'a'))</div>
+</div>
+<p>练习一：加第三个参数，设定从哪个字符开始搜起。</p>
+<p>练习二：加第三个参数，设定从哪个方向开始搜起。</p>
+<p>String对象有内置函数find。</p>
+<p>数字符串中某个字符的个数。</p>
+<p>练习：用上面三参数的find来做。</p>
+</div>
+<div class="section" id="string">
+<h1>String类（对象）方法</h1>
+<div class="line-block">
+<div class="line">upper()</div>
+<div class="line">lower()</div>
+</div>
+<p>方法调用：invocation/call</p>
+<div class="line-block">
+<div class="line">word.find('na')</div>
+<div class="line">word.find('na', 3)</div>
+<div class="line">name.find('b', 1, 2)</div>
+</div>
+</div>
+<div class="section" id="in">
+<h1>in操作符</h1>
+<p>'a' in 'banana'
+'seed' in 'banana'</p>
+<p>练习：写出下面的函数，使得
+in_both('apples', 'oranges')返回'aes'</p>
+</div>
+<div class="section" id="id6">
+<h1>字符串比较</h1>
+<p>字典序（alphabetical order）。大写字母排在小写字母前。</p>
+<p>字符串之间可以有以下对比操作:</p>
+<div class="line-block">
+<div class="line">==</div>
+<div class="line">&gt;, &gt;=</div>
+<div class="line">&lt;, &lt;=</div>
+</div>
+<p>练习：写is_reverse函数，使得is_reverse('god', 'dog')返回True。</p>
+<p>find_from函数的两种实现。如果能够找出错误，给1分奖励。</p>
+<p>字符串是对象（object）。</p>
+<p>对象的本质涵义 - data construct。</p>
+<p>计算复杂度。</p>
+<p>即兴定义函数，制造一个长度不小于4的密码。</p>
+</div>
+<div class="section" id="id7">
+<h1>列表</h1>
+<p>语言的内置（built-in）类型。注意与String类比，index也是从0开始， in操作符， 求长度，获得字串，遍历操作类似。</p>
+<blockquote>
+<div class="line-block">
+<div class="line">[ ]</div>
+<div class="line">[10, 20, 30, 40]</div>
+<div class="line">['crunchy frog', 'ram bladder', 'lark vomit']</div>
+</div>
+</blockquote>
+<p>列表中的元素不需要是同一类型的: <tt class="docutils literal">['spam', 2.0, 5, [10, 20]]</tt></p>
+<p>列表[10,20]在另外一个列表中，这叫嵌套列表。</p>
+<p>['spam', 1, ['Brie', 'Roquefort', 'Pol le Veq'], [1, 2, 3]]，长度是多少？</p>
+<p>列表是 Mutable类型。值可以在原地变。（注意与String的区别）。</p>
+<p>IndexError</p>
+<p>遍历</p>
+<dl class="docutils">
+<dt>for cheese in cheeses:</dt>
+<dd>print(cheese)</dd>
+<dt>for i in range(len(numbers)):</dt>
+<dd>numbers[i] = numbers[i] * 2</dd>
+<dt>for x in []:</dt>
+<dd>print('This never happens.')</dd>
+</dl>
+<!-- 讨论软件工程认证数据输入问题。 -->
+<p><tt class="docutils literal">+</tt> 操作符用来连接， <tt class="docutils literal">*</tt> 操作符用来重复。</p>
+<p>列表的方法</p>
+<p>append</p>
+<p>extend</p>
+<p>sort</p>
+<p>t = ['d', 'c', 'e', 'b', 'a']
+t.sort() # 文t.sort()返回什么值？
+t</p>
+<p>sum  - reduce方法，把几个值变成一个值</p>
+<p>map方法，把几个值变成另外几个值</p>
+<dl class="docutils">
+<dt>def f(x):</dt>
+<dd>return 2*x</dd>
+</dl>
+<p>list(map(f, [1,2]]))</p>
+<p>filter方法，从几个值中选择符合条件的几个值</p>
+<blockquote>
+<div class="line-block">
+<div class="line">def f(x):</div>
+<div class="line-block">
+<div class="line">if x % 2 == 0:</div>
+<div class="line-block">
+<div class="line">return True</div>
+</div>
+<div class="line">return False</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">list(filter(f, [1,2,3,4]))</div>
+</div>
+</blockquote>
+<p>pop</p>
+<p>t = ['a', 'b', 'c']
+x = t.pop(1) # pop可不带参数，不带参数返回哪个值？</p>
+<p>t = ['a', 'b', 'c']
+del t[1]</p>
+<p>t = ['a', 'b', 'c', 'd', 'e', 'f']
+del t[1:5]</p>
+<p>t = ['a', 'b', 'c']
+t.remove('b')</p>
+<p>list_of_characters = list('spam')
+list_of_words = 'spam should be filtered'.split()
+list_of_words = 'spam-should-be-filtered'.split('-')</p>
+<p>join方法</p>
+<p>','.join(['1','2','3'])</p>
+<p>a = 'banana'
+b = 'banana'
+a is b # a与b是不是指向同一个值
+a == b</p>
+<p>a = [1, 2, 3]
+b = [1, 2, 3]
+a is b # not identical, a and b are not the same object
+a == b # equivalent     though they have the same values</p>
+<p>别名（Aliasing）</p>
+<p>a = [1, 2, 3]
+b = a
+b is a</p>
+<p>把变量名与对象联系起来叫做reference。
+a与b是指向[1,2,3]的两个references。
+因为[1,2,3]是mutable的，所以使用a对[1,2,3]做改变同样影响到b对应的值。
+error-prone（易错）</p>
+</div>
+<div class="section" id="id8">
+<h1>列表作为参数</h1>
+<div class="line-block">
+<div class="line">def delete_head(t):</div>
+<div class="line-block">
+<div class="line">del t[0]</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">letters = ['a', 'b', 'c']</div>
+<div class="line">delete_head(letters) # letters and t points to the same list object.</div>
+<div class="line">letters</div>
+</div>
+</div>
+<div class="section" id="append">
+<h1>注意区别 <tt class="docutils literal">append</tt> 与 <tt class="docutils literal">+</tt> 操作符</h1>
+<p>t1 = [1, 2]
+t2 = t1.append(3)
+t1
+[1, 2, 3]
+t2</p>
+<p>t3 = t1 + [4]
+t3
+[1, 2, 3, 4]
+t1
+[1, 2, 3]</p>
+<p>区别如下两个函数:</p>
+<blockquote>
+<dl class="docutils">
+<dt>def bad_delete_head(t):</dt>
+<dd>t = t[1:] # WRONG!</dd>
+<dt>def tail(t):</dt>
+<dd>return t[1:]</dd>
+</dl>
+</blockquote>
+</div>
+<div class="section" id="dictionary">
+<h1>字典（Dictionary）</h1>
+<p>Mutable</p>
+<p>超级有用</p>
+<div class="line-block">
+<div class="line">d = {} or d = dict()</div>
+</div>
+<div class="line-block">
+<div class="line">d = {'hot':'热', 'cool':'凉', 'cold':'冷'}</div>
+<div class="line">d['warm'] = '温'</div>
+<div class="line">d['warm']</div>
+<div class="line">d['freezing'] # KeyError</div>
+<div class="line">len(d)</div>
+</div>
+<div class="line-block">
+<div class="line">'warm' in d</div>
+<div class="line">'温' in d.values()</div>
+</div>
+<p>key</p>
+<p>value</p>
+<p>key-value pair (item)</p>
+<p>item的顺序不可预测，不是按照创建时的顺序。</p>
+<p>练习：给定一个字符串，数出每个字母出现的频率。</p>
+<p>练习：给定一个字符串，数出每个单词出现的频率。</p>
+</div>
+<div class="section" id="id9">
+<h1>参考</h1>
+<ul class="simple">
+<li>Think Python 2e – Green Tea Press.  <a class="reference external" href="http://greenteapress.com/thinkpython2/thinkpython2.pdf">http://greenteapress.com/thinkpython2/thinkpython2.pdf</a>.</li>
+</ul>
+<!-- Make a html page from this file.  Issue the following command:
+pip install docutils && rst2html.py LectureNotesOnPython.rst LectureNotesOnPython.html -->
+</div>
+</div>
+</body>
+</html>
