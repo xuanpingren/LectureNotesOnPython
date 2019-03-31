@@ -10,6 +10,7 @@ Lecture Notes on Python
 	  
 非学究写书，无空洞行文。Python语法简洁，库函数全面强大，编程速度快，运行速度也不慢。
 
+.. contents:: 内容目录
 
 
 Python的发音纠正
@@ -259,8 +260,8 @@ a = [1, 2]   可以原地修改a[0] = 2
 
 
 
-数
-------
+数与格式化显示
+-------------------------
 
 | x = 3.1415926
 
@@ -641,11 +642,18 @@ error-prone（易错）
         return t[1:]
     
 
-**TDD**
-  Test-driven Development。测试驱动开发。 使用pytest。如何安装？ 使用命令 ``pip install pytest`` 
+TDD - Test-driven Development
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+测试驱动开发。 My favourite。 刺激有挑战性。 帮助厘清需求。  帮助编写代码。
+
+推荐使用pytest。如何安装？ 使用命令 ``pip install pytest`` 
 
 
-	
+
+计算复杂度
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 用Big O表述复杂度。O(n)， O(n^2), O(n^3)。
 
 
@@ -680,7 +688,14 @@ key-value pair (item)
 
 item的顺序不可预测，不是按照创建时的顺序。
 
-练习：给定一个字符串，数出每个字母出现的频率。使用 **Incremental Development** 。
+
+递增开发（Incremental Development）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+每次完成一小点。从易到难。
+
+
+练习：给定一个字符串，数出每个字母出现的频率。
 
     | def histogram(s):
     |     ''' Cannot pass any test cases. '''
