@@ -685,6 +685,7 @@ A list of objects</dd>
 </div>
 </div>
 </blockquote>
+<p>以上 <tt class="docutils literal"># [start,stop,step]</tt> 代表注释（comment），注释以 <tt class="docutils literal">#</tt> 号开头。</p>
 </div>
 <div class="section" id="concatenation">
 <h1>字符串相加（concatenation）</h1>
@@ -952,11 +953,17 @@ error-prone（易错）</p>
 <dd>return t[1:]</dd>
 </dl>
 </blockquote>
+<dl class="docutils">
+<dt><strong>TDD</strong></dt>
+<dd>Test-driven Development。测试驱动开发。 使用pytest。如何安装？ 使用命令 <tt class="docutils literal">pip install pytest</tt></dd>
+</dl>
+<p>用Big O表述复杂度。O(n)， O(n^2), O(n^3)。</p>
+<p>密码实验回顾。</p>
 </div>
 <div class="section" id="dictionary">
 <h1>字典（Dictionary）</h1>
-<p>Mutable</p>
-<p>超级有用</p>
+<p>Mutable数据类型。</p>
+<p>实际开发中超级有用。</p>
 <blockquote>
 <div class="line-block">
 <div class="line">d = {} or d = dict()</div>
@@ -977,7 +984,59 @@ error-prone（易错）</p>
 <p>value</p>
 <p>key-value pair (item)</p>
 <p>item的顺序不可预测，不是按照创建时的顺序。</p>
-<p>练习：给定一个字符串，数出每个字母出现的频率。</p>
+<p>练习：给定一个字符串，数出每个字母出现的频率。使用 <strong>Incremental Development</strong> 。</p>
+<blockquote>
+<div class="line-block">
+<div class="line">def histogram(s):</div>
+<div class="line-block">
+<div class="line">''' Cannot pass any test cases. '''</div>
+<div class="line">pass</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">def histogram(s):</div>
+<div class="line-block">
+<div class="line">''' Can pass the test case in which s is an empty string. '''</div>
+<div class="line">d = {}</div>
+<div class="line">return d</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">def histogram(s):</div>
+<div class="line-block">
+<div class="line">''' Can pass the test cases in which all characters in s are unique. '''</div>
+<div class="line">d = {}</div>
+<div class="line">for c in s:</div>
+<div class="line-block">
+<div class="line">d[c] = 1</div>
+</div>
+<div class="line">return d</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">def histogram(s):</div>
+<div class="line-block">
+<div class="line">''' Can pass all test cases. '''</div>
+<div class="line">d = {}</div>
+<div class="line">for c in s:</div>
+<div class="line-block">
+<div class="line">if c not in d:</div>
+<div class="line-block">
+<div class="line">d[c] = 1</div>
+</div>
+<div class="line">else:</div>
+<div class="line-block">
+<div class="line">d[c] += 1</div>
+</div>
+</div>
+<div class="line">return d</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">h = histogram('good')</div>
+<div class="line">print(h)</div>
+</div>
+</blockquote>
 <p>练习：给定一个字符串，数出每个单词出现的频率。</p>
 </div>
 <div class="section" id="id9">

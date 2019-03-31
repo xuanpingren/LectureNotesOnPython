@@ -349,6 +349,9 @@ len()函数。返回字符串字符个数。len(fruit)。
     |     print(c)
     
 
+以上 ``# [start,stop,step]`` 代表注释（comment），注释以 ``#`` 号开头。
+    
+
 
 字符串相加（concatenation）
 -------------------------------------------------------
@@ -638,14 +641,25 @@ error-prone（易错）
         return t[1:]
     
 
+**TDD**
+  Test-driven Development。测试驱动开发。 使用pytest。如何安装？ 使用命令 ``pip install pytest`` 
+
+
+	
+用Big O表述复杂度。O(n)， O(n^2), O(n^3)。
+
+
+
+密码实验回顾。
+
 
 
 字典（Dictionary）
 ---------------------------------
 
-Mutable
+Mutable数据类型。
 
-超级有用
+实际开发中超级有用。
 
     | d = {} or d = dict()
     
@@ -666,7 +680,38 @@ key-value pair (item)
 
 item的顺序不可预测，不是按照创建时的顺序。
 
-练习：给定一个字符串，数出每个字母出现的频率。
+练习：给定一个字符串，数出每个字母出现的频率。使用 **Incremental Development** 。
+
+    | def histogram(s):
+    |     ''' Cannot pass any test cases. '''
+    |     pass
+    
+    | def histogram(s):
+    |     ''' Can pass the test case in which s is an empty string. '''
+    |     d = {}
+    |     return d
+    
+    | def histogram(s):
+    |     ''' Can pass the test cases in which all characters in s are unique. '''
+    |     d = {}
+    |     for c in s:
+    |         d[c] = 1
+    |     return d
+    
+    | def histogram(s):
+    |     ''' Can pass all test cases. '''
+    |     d = {}
+    |     for c in s:
+    |         if c not in d:
+    |             d[c] = 1
+    |         else:
+    |             d[c] += 1
+    |     return d
+    
+    
+    | h = histogram('good')
+    | print(h)
+    
 
 练习：给定一个字符串，数出每个单词出现的频率。
 
