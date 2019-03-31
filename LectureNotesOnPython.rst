@@ -509,16 +509,18 @@ for x in []:
 
 列表的方法
 
-append
+    append
+    
+    extend
+    
+    sort
+    
+    t = ['d', 'c', 'e', 'b', 'a']
 
-extend
+    t.sort() # 问t.sort()返回什么值？
 
-sort
-
-t = ['d', 'c', 'e', 'b', 'a']
-t.sort() # 文t.sort()返回什么值？
-t
-
+    t
+    
 sum  - reduce方法，把几个值变成一个值
 
 map方法，把几个值变成另外几个值
@@ -542,41 +544,48 @@ filter方法，从几个值中选择符合条件的几个值
 
 pop
 
-t = ['a', 'b', 'c']
-x = t.pop(1) # pop可不带参数，不带参数返回哪个值？
+    | t = ['a', 'b', 'c']
+    | x = t.pop(1) # pop可不带参数，不带参数返回哪个值？
+    
 
-t = ['a', 'b', 'c']
-del t[1]
+del
 
-t = ['a', 'b', 'c', 'd', 'e', 'f']
-del t[1:5]
+    | t = ['a', 'b', 'c']
+    | del t[1]
+    
+    | t = ['a', 'b', 'c', 'd', 'e', 'f']
+    | del t[1:5]
+    
 
+remove
 
-t = ['a', 'b', 'c']
-t.remove('b')
+    | t = ['a', 'b', 'c']
+    | t.remove('b')
+    
 
+split
 
-list_of_characters = list('spam')
-list_of_words = 'spam should be filtered'.split()
-list_of_words = 'spam-should-be-filtered'.split('-')
-
+    | list_of_characters = list('spam')
+    | list_of_words = 'spam should be filtered'.split()
+    | list_of_words = 'spam-should-be-filtered'.split('-')
+    
 
 join方法
 
-','.join(['1','2','3'])
-
-
-a = 'banana'
-b = 'banana'
-a is b # a与b是不是指向同一个值
-a == b
-
-
-a = [1, 2, 3]
-b = [1, 2, 3]
-a is b # not identical, a and b are not the same object 
-a == b # equivalent     though they have the same values
-
+    | ','.join(['1','2','3'])
+    
+    
+    | a = 'banana'
+    | b = 'banana'
+    | a is b # a与b是不是指向同一个值
+    | a == b
+    
+    
+    | a = [1, 2, 3]
+    | b = [1, 2, 3]
+    | a is b # not identical, a and b are not the same object 
+    | a == b # equivalent     though they have the same values
+    
 
 别名（Aliasing）
 
@@ -594,30 +603,30 @@ error-prone（易错）
 列表作为参数
 ---------------------------------------------
 
-| def delete_head(t):
-|     del t[0]
-
-| letters = ['a', 'b', 'c']
-| delete_head(letters) # letters and t points to the same list object.
-| letters
-
+    | def delete_head(t):
+    |     del t[0]
+    
+    | letters = ['a', 'b', 'c']
+    | delete_head(letters) # letters and t points to the same list object.
+    | letters
+    
 
 注意区别 ``append`` 与 ``+`` 操作符
 ----------------------------------------------
 
-t1 = [1, 2]
-t2 = t1.append(3)
-t1
-[1, 2, 3]
-t2
-
-
-t3 = t1 + [4]
-t3
-[1, 2, 3, 4]
-t1
-[1, 2, 3]
-
+    | t1 = [1, 2]
+    | t2 = t1.append(3)
+    | t1
+    | [1, 2, 3]
+    | t2
+    
+    
+    | t3 = t1 + [4]
+    | t3
+    | [1, 2, 3, 4]
+    | t1
+    | [1, 2, 3]
+    
 
 
 区别如下两个函数:
@@ -638,17 +647,17 @@ Mutable
 
 超级有用
 
-| d = {} or d = dict()
-
-| d = {'hot':'热', 'cool':'凉', 'cold':'冷'}
-| d['warm'] = '温'
-| d['warm']
-| d['freezing'] # KeyError
-| len(d)
-
-| 'warm' in d
-| '温' in d.values()
-
+    | d = {} or d = dict()
+    
+    | d = {'hot':'热', 'cool':'凉', 'cold':'冷'}
+    | d['warm'] = '温'
+    | d['warm']
+    | d['freezing'] # KeyError
+    | len(d)
+    
+    | 'warm' in d
+    | '温' in d.values()
+    
 key
 
 value

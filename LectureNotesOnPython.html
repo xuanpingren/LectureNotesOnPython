@@ -818,12 +818,14 @@ in_both('apples', 'oranges')返回'aes'</p>
 <!-- 讨论软件工程认证数据输入问题。 -->
 <p><tt class="docutils literal">+</tt> 操作符用来连接， <tt class="docutils literal">*</tt> 操作符用来重复。</p>
 <p>列表的方法</p>
+<blockquote>
 <p>append</p>
 <p>extend</p>
 <p>sort</p>
-<p>t = ['d', 'c', 'e', 'b', 'a']
-t.sort() # 文t.sort()返回什么值？
-t</p>
+<p>t = ['d', 'c', 'e', 'b', 'a']</p>
+<p>t.sort() # 问t.sort()返回什么值？</p>
+<p>t</p>
+</blockquote>
 <p>sum  - reduce方法，把几个值变成一个值</p>
 <p>map方法，把几个值变成另外几个值</p>
 <dl class="docutils">
@@ -848,27 +850,56 @@ t</p>
 </div>
 </blockquote>
 <p>pop</p>
-<p>t = ['a', 'b', 'c']
-x = t.pop(1) # pop可不带参数，不带参数返回哪个值？</p>
-<p>t = ['a', 'b', 'c']
-del t[1]</p>
-<p>t = ['a', 'b', 'c', 'd', 'e', 'f']
-del t[1:5]</p>
-<p>t = ['a', 'b', 'c']
-t.remove('b')</p>
-<p>list_of_characters = list('spam')
-list_of_words = 'spam should be filtered'.split()
-list_of_words = 'spam-should-be-filtered'.split('-')</p>
+<blockquote>
+<div class="line-block">
+<div class="line">t = ['a', 'b', 'c']</div>
+<div class="line">x = t.pop(1) # pop可不带参数，不带参数返回哪个值？</div>
+</div>
+</blockquote>
+<p>del</p>
+<blockquote>
+<div class="line-block">
+<div class="line">t = ['a', 'b', 'c']</div>
+<div class="line">del t[1]</div>
+</div>
+<div class="line-block">
+<div class="line">t = ['a', 'b', 'c', 'd', 'e', 'f']</div>
+<div class="line">del t[1:5]</div>
+</div>
+</blockquote>
+<p>remove</p>
+<blockquote>
+<div class="line-block">
+<div class="line">t = ['a', 'b', 'c']</div>
+<div class="line">t.remove('b')</div>
+</div>
+</blockquote>
+<p>split</p>
+<blockquote>
+<div class="line-block">
+<div class="line">list_of_characters = list('spam')</div>
+<div class="line">list_of_words = 'spam should be filtered'.split()</div>
+<div class="line">list_of_words = 'spam-should-be-filtered'.split('-')</div>
+</div>
+</blockquote>
 <p>join方法</p>
-<p>','.join(['1','2','3'])</p>
-<p>a = 'banana'
-b = 'banana'
-a is b # a与b是不是指向同一个值
-a == b</p>
-<p>a = [1, 2, 3]
-b = [1, 2, 3]
-a is b # not identical, a and b are not the same object
-a == b # equivalent     though they have the same values</p>
+<blockquote>
+<div class="line-block">
+<div class="line">','.join(['1','2','3'])</div>
+</div>
+<div class="line-block">
+<div class="line">a = 'banana'</div>
+<div class="line">b = 'banana'</div>
+<div class="line">a is b # a与b是不是指向同一个值</div>
+<div class="line">a == b</div>
+</div>
+<div class="line-block">
+<div class="line">a = [1, 2, 3]</div>
+<div class="line">b = [1, 2, 3]</div>
+<div class="line">a is b # not identical, a and b are not the same object</div>
+<div class="line">a == b # equivalent     though they have the same values</div>
+</div>
+</blockquote>
 <p>别名（Aliasing）</p>
 <p>a = [1, 2, 3]
 b = a
@@ -880,6 +911,7 @@ error-prone（易错）</p>
 </div>
 <div class="section" id="id8">
 <h1>列表作为参数</h1>
+<blockquote>
 <div class="line-block">
 <div class="line">def delete_head(t):</div>
 <div class="line-block">
@@ -891,19 +923,26 @@ error-prone（易错）</p>
 <div class="line">delete_head(letters) # letters and t points to the same list object.</div>
 <div class="line">letters</div>
 </div>
+</blockquote>
 </div>
 <div class="section" id="append">
 <h1>注意区别 <tt class="docutils literal">append</tt> 与 <tt class="docutils literal">+</tt> 操作符</h1>
-<p>t1 = [1, 2]
-t2 = t1.append(3)
-t1
-[1, 2, 3]
-t2</p>
-<p>t3 = t1 + [4]
-t3
-[1, 2, 3, 4]
-t1
-[1, 2, 3]</p>
+<blockquote>
+<div class="line-block">
+<div class="line">t1 = [1, 2]</div>
+<div class="line">t2 = t1.append(3)</div>
+<div class="line">t1</div>
+<div class="line">[1, 2, 3]</div>
+<div class="line">t2</div>
+</div>
+<div class="line-block">
+<div class="line">t3 = t1 + [4]</div>
+<div class="line">t3</div>
+<div class="line">[1, 2, 3, 4]</div>
+<div class="line">t1</div>
+<div class="line">[1, 2, 3]</div>
+</div>
+</blockquote>
 <p>区别如下两个函数:</p>
 <blockquote>
 <dl class="docutils">
@@ -918,6 +957,7 @@ t1
 <h1>字典（Dictionary）</h1>
 <p>Mutable</p>
 <p>超级有用</p>
+<blockquote>
 <div class="line-block">
 <div class="line">d = {} or d = dict()</div>
 </div>
@@ -932,6 +972,7 @@ t1
 <div class="line">'warm' in d</div>
 <div class="line">'温' in d.values()</div>
 </div>
+</blockquote>
 <p>key</p>
 <p>value</p>
 <p>key-value pair (item)</p>
