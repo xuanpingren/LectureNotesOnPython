@@ -263,45 +263,45 @@ a = [1, 2]   可以原地修改a[0] = 2
 数与格式化显示
 -------------------------
 
-| x = 3.1415926
-
-| print('%4.0f' % (x))
-| print('%4.1f' % (x))
-| print('%4.2f' % (x))
-| print('%4.3f' % (x))
-| print('%4.4f' % (x))
-
-
-| print('%6.0f' % (x))
-| print('%6.1f' % (x))
-| print('%6.2f' % (x))
-| print('%6.3f' % (x))
-| print('%6.4f' % (x))
-
-
-| print('%.0f' % (x))
-| print('%.1f' % (x))
-| print('%.2f' % (x))
-| print('%.3f' % (x))
-| print('%.4f' % (x))
-| print('%.5f' % (x))
-| print('%.6f' % (x))
-| print('%.7f' % (x))
-| print('%.8f' % (x))
-| print('%.9f' % (x))
-| print('%.15f' % (x))
-| print('%.16f' % (x))
-| print('%.17f' % (x))
-| print('%.18f' % (x))
-
-| print('%4.f' % (x))
-| print('%5.f' % (x))
-| print('%6.f' % (x))
-| print('%7.f' % (x))
-| print('%8.f' % (x))
-
-| print('%f' % (x))
-
+    | x = 3.1415926
+    
+    | print('%4.0f' % (x))
+    | print('%4.1f' % (x))
+    | print('%4.2f' % (x))
+    | print('%4.3f' % (x))
+    | print('%4.4f' % (x))
+    
+    
+    | print('%6.0f' % (x))
+    | print('%6.1f' % (x))
+    | print('%6.2f' % (x))
+    | print('%6.3f' % (x))
+    | print('%6.4f' % (x))
+    
+    
+    | print('%.0f' % (x))
+    | print('%.1f' % (x))
+    | print('%.2f' % (x))
+    | print('%.3f' % (x))
+    | print('%.4f' % (x))
+    | print('%.5f' % (x))
+    | print('%.6f' % (x))
+    | print('%.7f' % (x))
+    | print('%.8f' % (x))
+    | print('%.9f' % (x))
+    | print('%.15f' % (x))
+    | print('%.16f' % (x))
+    | print('%.17f' % (x))
+    | print('%.18f' % (x))
+    
+    | print('%4.f' % (x))
+    | print('%5.f' % (x))
+    | print('%6.f' % (x))
+    | print('%7.f' % (x))
+    | print('%8.f' % (x))
+    
+    | print('%f' % (x))
+    
 
 
 字符串（Strings）
@@ -535,8 +535,8 @@ def f(x):
 list(map(f, [1,2]]))
 
 
+filter方法，从几个值中选择符合条件的几个值。
 
-filter方法，从几个值中选择符合条件的几个值
 
     | def f(x):
     |     if x % 2 == 0:
@@ -647,7 +647,45 @@ TDD - Test-driven Development
 
 测试驱动开发。 My favourite。 刺激有挑战性。 帮助厘清需求。  帮助编写代码。
 
-推荐使用pytest。如何安装？ 使用命令 ``pip install pytest`` 
+推荐使用pytest。如何安装？ 使用命令 ``pip install pytest``。
+
+在 ``test_cases.py`` 写如下测试用例。然后在命令行运行： ``python -m pytest test_cases.py`` 。
+
+.. code:: python
+
+	  # Copyright (c) Hui Lan 2019
+
+          import random
+          import string
+          
+          def make_password(n):
+              '''
+              Return a string of length n consisting of a combination of
+              letters, digits and special characters.  Note that each password
+              must have at least one lower case letter, one upper case letter,
+              one digit and one special charater.  Return an empty string if n
+              is less than 4.
+              '''
+          
+              if n < 4:
+                  return ''
+              
+              password = random.choice(string.ascii_lowercase) + \
+                  random.choice(string.ascii_uppercase) + \
+                  random.choice(string.digits) + \
+                  random.choice(string.punctuation) + \
+                  ''.join([random.choice(string.ascii_letters + string.digits + string.punctuation) for i in range(n-4)])
+          
+              return ''.join(random.sample(password, n)) # shuffle password then return
+          
+          
+          
+          
+          if __name__ == '__main__':
+              for n in range(0,20):
+                  pwd = make_password(n)
+                  print(pwd)
+            
 
 
 
@@ -697,38 +735,261 @@ item的顺序不可预测，不是按照创建时的顺序。
 
 练习：给定一个字符串，数出每个字母出现的频率。
 
-    | def histogram(s):
-    |     ''' Cannot pass any test cases. '''
-    |     pass
+.. code:: python
+	  
+     def histogram(s):
+         ''' Cannot pass any test cases. '''
+         pass
     
-    | def histogram(s):
-    |     ''' Can pass the test case in which s is an empty string. '''
-    |     d = {}
-    |     return d
+     def histogram(s):
+         ''' Can pass the test case in which s is an empty string. '''
+         d = {}
+         return d
     
-    | def histogram(s):
-    |     ''' Can pass the test cases in which all characters in s are unique. '''
-    |     d = {}
-    |     for c in s:
-    |         d[c] = 1
-    |     return d
+     def histogram(s):
+         ''' Can pass the test cases in which all characters in s are unique. '''
+         d = {}
+         for c in s:
+             d[c] = 1
+         return d
     
-    | def histogram(s):
-    |     ''' Can pass all test cases. '''
-    |     d = {}
-    |     for c in s:
-    |         if c not in d:
-    |             d[c] = 1
-    |         else:
-    |             d[c] += 1
-    |     return d
+     def histogram(s):
+         ''' Can pass all test cases. '''
+         d = {}
+         for c in s:
+             if c not in d:
+                 d[c] = 1
+             else:
+                 d[c] += 1
+         return d
     
     
-    | h = histogram('good')
-    | print(h)
+     h = histogram('good')
+     print(h)
     
 
 练习：给定一个字符串，数出每个单词出现的频率。
+
+练习：给定一个新闻文本，数出每个单词出现的频率。考虑以下方面，（1）只考虑字典里有的单词。（2）单词周围如有标点符号，要先移除。
+
+.. code:: python
+	  
+	  # Copyright (C) 2019 Hui Lan
+          # The following line fixes SyntaxError: Non-UTF-8 code starting with ...
+          # coding=utf8
+          
+          def file2lst(fname):
+              ''' Return a list where each element is a word from fname. '''
+              L = []
+              f = open(fname)
+              for line in f:
+                  line = line.strip()
+                  lst = line.split()
+                  for x in lst:
+                      L.append(x)
+              f.close()
+              return L
+          
+          
+          def lst2dict(lst):
+              ''' Return a dictionary given list lst.  Each key is an element in the lst.
+              The value is always 1.'''
+              d = {}
+              for w in lst:
+                  d[w] = 1 
+              return d
+          
+          
+          import string
+          def remove_punctuation(s):
+              p = ',.:’“”' + string.punctuation  
+              t = ''
+              for c in s:
+                  if not c in p:
+                      t += c
+                  elif c == '’': # handle the case such as May’s
+                      return t
+              return t
+          
+          def word_frequency(fname, english_dictionary):
+              ''' Return a dictionary where each key is a word both in the file fname and in 
+              the dictionary english_dictionary, and the corresponding value is the frequency
+              of that word.'''
+              d = {}
+              L = file2lst(fname)
+              for x in L:
+                  x = remove_punctuation(x.lower())
+                  if x in english_dictionary:
+                      if not x in d:
+                          d[x] = 1
+                      else:
+                          d[x] += 1
+              return d
+          
+          
+          def sort_by_value(d):
+              ''' Return a sorted list of tuples, each tuple containing a key and a value.
+                  Note that the tuples are order in descending order of the value.'''
+              import operator
+              lst = sorted(d.items(), key=operator.itemgetter(1), reverse=True)    
+              return lst
+          
+          
+          if __name__ == '__main__':    
+              ed = lst2dict(file2lst('words.txt')) # from http://greenteapress.com/thinkpython2/code/words.txt
+              d = word_frequency('brexit-news.txt', ed)
+              lst = sort_by_value(d)
+              for x in lst:
+                  print('%s (%d)' % (x[0], x[1]))
+          
+    
+
+key与value互换
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+注意到在原来的字典中一个value可能对应多个key的值。比如 ``d = {'a':1, 'b':2, 'c':2}`` 中，2就对应两个key，'b'与'c'。
+
+
+.. code:: python
+	  
+          def inverse_dictionary(d):
+              d2 = {}
+              for k in d:
+                  v = d[k]
+                  if not v in d2:
+                      d2[v] = [k]
+                  else:
+                      d2[v].append(k)
+              return d2
+          
+          
+          
+          d = {'a':1, 'b':2, 'c':2}
+          d2 = inverse_dictionary(d)
+          print(d2)
+          
+
+练习： 用 ``inverse_dictionary`` 对上面 ``d = word_frequency('brexit-news.txt', ed)`` 产生的 ``d`` 进行转化。然后按照单词出现频率从高到低把所有单词都显示出来。每行显示一个频率内的所有单词。
+
+
+.. code:: python
+	  
+          d2 = inverse_dictionary(d)
+          for k in sorted(d2.keys(), reverse=True):
+              print('%d %s' % (k, ' '.join(d2[k])))
+              
+
+练习： 使用 ``setdefault`` 方法对上面的 ``inverse_dictionary`` 进行简化 （减少行数）。
+
+
+.. code:: python
+
+
+
+          def inverse_dictionary(d):
+              d2 = {}
+              for k in d:
+                  v = d[k]
+                  d2.setdefault(v, []).append(k)
+          
+              return d2
+          
+
+
+
+函数
+------
+
+函数 ``unique_words`` 与 ``unique_words2`` 哪个运行速度快？
+
+.. code:: python
+
+          def unique_words(lst):
+              d = {}
+              for x in lst:
+                  d[x] = 1
+              return sorted(d.keys())
+          
+          def unique_words2(lst):
+              return sorted(list(set(lst)))
+          
+          
+          N = 10000000
+          print(unique_words(['hello', 'world', 'am', 'he'] * N))
+          print(unique_words2(['hello', 'world', 'am', 'he'] * N))
+          
+
+
+局部变量
+~~~~~~~~~~~~~~~~
+
+在函数之内。函数执行结束，局部变量消失。
+
+
+全局变量
+~~~~~~~~~~~~~~~~
+
+全局变量位于函数之外，模块之内。全局变量对所有模块内的函数可见（可读）。如果在函数内要对全局变量重新赋值，那么要先用 ``global`` 声明之 （declare）。
+
+
+.. code:: python
+	  
+          verbose = True
+          
+          def example1():
+              if verbose:
+                  print('Running example1')
+                  
+          def example2():
+              verbose = False  # a NEW local variable verbose
+              if verbose:
+                  print('Running example2')
+                  
+          def example3():
+              global verbose # I am actually going to use the global variable verbose; don't create a local one.
+              verbose = False
+              if verbose:
+                  print('Running example3')
+          
+          
+          
+          print(verbose)     
+          example1()
+          
+          print(verbose) 
+          example2()
+          example1()
+          
+          print(verbose) 
+          example3()
+          example1()
+          
+          print(verbose) 
+          
+
+
+全局的列表与字典，如果只需改变其内容，而不是重新赋值，则不需要用 ``global`` 声明。
+
+
+.. code:: python
+	  
+          record = {'s1':65, 's2':60}
+          
+          def add_score(student, score):
+              record[student] = score
+              
+              
+          print(record)
+          add_score('s3', 75)
+          print(record)
+
+
+练习： 定义一个函数 ``empty_dict`` 清空字典 ``record``。 要求: 不能用 ``return`` 语句。 提示： 可以用 ``pop`` 方法， 或者直接给 ``record`` 赋值 ``{}`` 。
+
+
+函数执行顺序
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 
 参考
