@@ -439,7 +439,7 @@ in操作符
 'seed' in 'banana'
 
 练习：写出下面的函数，使得
-in_both('apples', 'oranges')返回'aes'
+in_both('apples', 'oranges')返回'aes'。
 
 
 字符串比较
@@ -842,7 +842,9 @@ item的顺序不可预测，不是按照创建时的顺序。
               for x in lst:
                   print('%s (%d)' % (x[0], x[1]))
           
-    
+
+练习： 改写函数 ``word_frequency`` ， 使它能接受第三个参数， ``black_lst``。 ``black_lst`` 是包含要排除考虑的单词的列表。 例如， ``black_lst`` 可以是 ``['the', 'and', 'of', 'to']`` 。
+
 
 key与value互换
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
