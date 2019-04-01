@@ -987,8 +987,43 @@ key与value互换
 练习： 定义一个函数 ``empty_dict`` 清空字典 ``record``。 要求: 不能用 ``return`` 语句。 提示： 可以用 ``pop`` 方法， 或者直接给 ``record`` 赋值 ``{}`` 。
 
 
-函数执行顺序
+调用函数与传递参数
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+在使用函数前要先确定函数已经被定义。
+
+区别 ``argument`` 与 ``parameter`` 。传过去的是 ``argument`` ， 函数头的参数列表是 ``parameter`` 。 ``argument`` 的值赋给 ``parameter`` ， ``parameter`` 是函数的局部变量。
+
+``argument`` 与 ``parameter`` 的名字可以相同也可以不同。
+
+
+.. code:: python
+	  
+          def reverse_string(s):
+              t = ''
+              for i in range(len(s)-1,-1,-1):
+                  t += s[i]
+              return t
+          
+
+
+          s = 'put'
+          t = reverse_string(s)
+          print(t)
+
+以上 s 一个是全局变量一个是局部变量。
+
+以上 t 一个是全局变量一个是局部变量。 
+
+
+
+
+函数执行顺序 （flow of execution）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+函数的定义不执行，被调用时才执行。
+
+顺序执行。 当遇到函数调用时，跳转到函数，执行函数，函数返回后继续执行跳转地后一条语句。
 
 
 
